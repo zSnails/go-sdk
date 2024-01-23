@@ -3,7 +3,6 @@ package dbl
 import (
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -22,7 +21,7 @@ func (c *Client) readBody(res *http.Response) ([]byte, error) {
 		return nil, ErrRequestFailed
 	}
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 
 	if err != nil {
 		return nil, err
